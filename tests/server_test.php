@@ -39,12 +39,12 @@ class server_test extends \advanced_testcase {
         $headers = [
             'USER' => 'www-data',
             'HOME' => '/var/www',
-            'content-length' => '17',
-            'authorization' => 'e71561c88ca7f0f0c94fee66ca07247b',
-            'accept' => 'application/json',
-            'content-type' => 'application/x-www-form-urlencoded',
-            'user-agent' => 'curl/7.47.0',
-            'host' => 'moodle.local',
+            'HTTP_CONTENT_LENGTH' => '17',
+            'HTTP_AUTHORIZATION' => 'e71561c88ca7f0f0c94fee66ca07247b',
+            'HTTP_ACCEPT' => 'application/json',
+            'HTTP_CONTENT_TYPE' => 'application/x-www-form-urlencoded',
+            'HTTP_USER_AGENT' => 'curl/7.47.0',
+            'HTTP_HOST' => 'moodle.local',
             'REDIRECT_STATUS' => '200',
             'SERVER_NAME' => 'moodle.local',
             'SERVER_PORT' => '80',
@@ -105,7 +105,7 @@ class server_test extends \advanced_testcase {
      */
     public function test_get_wstoken_error(): void {
         $headers = [];
-        $this->expectOutputString('{"exception":"moodle_exception",'
+        $this->expectOutputString('{"exception":"core\\\exception\\\moodle_exception",'
                                 .'"errorcode":"noauthheader",'
                                 .'"message":"No Authorization header found in request sent to Moodle"}');
 
@@ -143,7 +143,7 @@ class server_test extends \advanced_testcase {
      */
     public function test_get_wsfunction_error(): void {
         $getvars = [];
-        $this->expectOutputString('{"exception":"moodle_exception",'
+        $this->expectOutputString('{"exception":"core\\\exception\\\moodle_exception",'
                                 .'"errorcode":"nowsfunction",'
                                 .'"message":"No webservice function found in URL sent to Moodle"}');
 
@@ -185,7 +185,7 @@ class server_test extends \advanced_testcase {
      */
     public function test_get_responseformat_error(): void {
         $headers = [];
-        $this->expectOutputString('{"exception":"moodle_exception",'
+        $this->expectOutputString('{"exception":"core\\\exception\\\moodle_exception",'
                                 .'"errorcode":"noacceptheader",'
                                 .'"message":"No Accept header found in request sent to Moodle"}');
 
@@ -227,7 +227,7 @@ class server_test extends \advanced_testcase {
      */
     public function test_get_requestformat_error(): void {
         $headers = [];
-        $this->expectOutputString('{"exception":"moodle_exception",'
+        $this->expectOutputString('{"exception":"core\\\exception\\\moodle_exception",'
             .'"errorcode":"notypeheader",'
             .'"message":"No Content Type header found in request sent to Moodle"}');
 
