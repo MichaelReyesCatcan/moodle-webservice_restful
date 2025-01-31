@@ -105,7 +105,7 @@ class server_test extends \advanced_testcase {
      */
     public function test_get_wstoken_error(): void {
         $headers = [];
-        $this->expectOutputString('{"exception":"moodle_exception",'
+        $this->expectOutputString('{"exception":"core\\\exception\\\moodle_exception",'
                                 .'"errorcode":"noauthheader",'
                                 .'"message":"No Authorization header found in request sent to Moodle"}');
 
@@ -143,7 +143,7 @@ class server_test extends \advanced_testcase {
      */
     public function test_get_wsfunction_error(): void {
         $getvars = [];
-        $this->expectOutputString('{"exception":"moodle_exception",'
+        $this->expectOutputString('{"exception":"core\\\exception\\\moodle_exception",'
                                 .'"errorcode":"nowsfunction",'
                                 .'"message":"No webservice function found in URL sent to Moodle"}');
 
@@ -185,7 +185,7 @@ class server_test extends \advanced_testcase {
      */
     public function test_get_responseformat_error(): void {
         $headers = [];
-        $this->expectOutputString('{"exception":"moodle_exception",'
+        $this->expectOutputString('{"exception":"core\\\exception\\\moodle_exception",'
                                 .'"errorcode":"noacceptheader",'
                                 .'"message":"No Accept header found in request sent to Moodle"}');
 
@@ -227,7 +227,7 @@ class server_test extends \advanced_testcase {
      */
     public function test_get_requestformat_error(): void {
         $headers = [];
-        $this->expectOutputString('{"exception":"moodle_exception",'
+        $this->expectOutputString('{"exception":"core\\\exception\\\moodle_exception",'
             .'"errorcode":"notypeheader",'
             .'"message":"No Content Type header found in request sent to Moodle"}');
 
